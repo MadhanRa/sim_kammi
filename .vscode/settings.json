@@ -1,0 +1,7 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+    "formatFiles.excludedFolders": ["node_modules", ".vscode", ".git", "dist", ".chrome", "assets", "library/fpdf17", "petugas/contents/backupdata", "admin/contents/backupdata"]
+}
