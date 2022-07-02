@@ -2,8 +2,10 @@
 if (!isset($_SESSION["username_petugas"]))
 	header("Location: ../administrator.php");
 ?>
-<?php include_once "library/database.php"; ?>
-<?php include_once "library/fungsi.php"; ?>
+<?php
+include_once "library/database.php";
+
+?>
 <div class="inner" style="min-height: 700px;">
 	<div class="row">
 		<div class="col-lg-12">
@@ -48,7 +50,7 @@ if (!isset($_SESSION["username_petugas"]))
 						<label class="control-label col-lg-1">s/d</label>
 						<div class="col-lg-3">
 							<div class="input-group">
-								<input name="tglakhir" class="form-control" type="date" />
+								<input name="tglakhir" class="form-control" type="date" required />
 								<span class="input-group-addon"><i class="icon-calendar"></i></span>
 							</div>
 						</div>
@@ -128,12 +130,12 @@ if (!isset($_SESSION["username_petugas"]))
 				<tbody>
 					<?php
 					$i = 1;
-					$tampil = $koneksi->prepare("SELECT id_agenda,judul, jam_awal,jam_akhir,tgl_awal,tgl_akhir,keterangan from tbl_agenda");
+					$tampil = $koneksi->prepare("SELECT id_agenda,judul, jam_awal,jam_akhir,tgl_awal,tgl_akhir, pj, keterangan from tbl_agenda");
 					$tampil->execute();
 					$tampil->store_result();
-					$tampil->bind_result($id, $judul, $jamawal, $jamakhir, $tglawal, $tglakhir, $ket);
+					$tampil->bind_result($id, $judul, $jamawal, $jamakhir, $tglawal, $tglakhir, $pj, $ket);
 					if ($tampil->num_rows() == 0) {
-						echo "<tr align='center' bgcolor='pink'><td  colspan='6'><b>BELUM ADA DATA!</b></td></tr>";
+						echo "<tr align='center' bgcolor='pink'><td  colspan='7'><b>BELUM ADA DATA!</b></td></tr>";
 					} else {
 						while ($tampil->fetch()) {
 					?>
@@ -142,13 +144,11 @@ if (!isset($_SESSION["username_petugas"]))
 								<td><?php echo $judul; ?></td>
 								<td><?php echo $jamawal . " s/d " . $jamakhir; ?></td>
 								<td><?php echo $tglawal . " s/d " . $tglakhir; ?></td>
-								<td>
-									<p>Fulan</p>
-								</td>
+								<td><?php echo $pj; ?></td>
 								<td><?php echo $ket; ?></td>
 								<td>
-									<button type="edit" class="btn btn-block btn-md btn-warning"><i class="icon-edit"></i> Edit</button>
-									<button type="remove" class="btn btn-block btn-md btn-danger"><i class="icon-remove"></i> Hapus</button>
+									<a href="index.php?m=contents&p=edit-agenda&id=<?= $id ?>" class="btn btn-block btn-md btn-warning"><i class="icon-edit"></i> Edit</a>
+									<a href="library/delete-agenda.php?id=<?= $id ?>" class="btn btn-block btn-md btn-danger confirmation-agenda"><i class="icon-remove"></i> Hapus</a>
 								</td>
 							</tr>
 					<?php

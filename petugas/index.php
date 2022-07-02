@@ -193,6 +193,11 @@ if (!isset($_SESSION["username_petugas"]))
             } else return false;
         }
     </script>
+    <script type="text/javascript">
+        $('.confirmation-agenda').on('click', function() {
+            return confirm('Yakin ingin menghapus agenda?');
+        });
+    </script>
 
 </body>
 
