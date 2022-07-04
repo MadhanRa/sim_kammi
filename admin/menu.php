@@ -11,7 +11,7 @@
         <span class="pull-right">
             <i class="icon-angle-left"></i>
         </span>
-        &nbsp; <span class="label label-info">2</span>&nbsp;
+        <!-- &nbsp; <span class="label label-info">2</span>&nbsp; -->
     </a>
     <ul class="collapse" id="pembayaran-nav">
         <li class=""><a href="index.php?m=contents&p=inputdatapetugas"><i class="icon-angle-right"></i> Input Data Baru </a></li>
@@ -27,7 +27,6 @@
         <span class="pull-right">
             <i class="icon-angle-left"></i>
         </span>
-        &nbsp; <span class="label label-warning">2</span>&nbsp;
     </a>
     <ul class="collapse" id="user-nav">
         <li class=""><a href="index.php?m=contents&p=inputdatauser"><i class="icon-angle-right"></i> Input Data Baru </a></li>
@@ -42,7 +41,6 @@
         <span class="pull-right">
             <i class="icon-angle-left"></i>
         </span>
-        &nbsp; <span class="label label-primary">2</span>&nbsp;
     </a>
     <ul class="collapse" id="ab-nav">
         <li class=""><a href="index.php?m=contents&p=kategori"><i class="icon-angle-right"></i> Input Kategori </a></li>
@@ -57,7 +55,6 @@
         <span class="pull-right">
             <i class="icon-angle-left"></i>
         </span>
-        &nbsp; <span class="label label-primary">2</span>&nbsp;
     </a>
     <ul class="collapse" id="br-nav">
         <li class=""><a href="index.php?m=contents&p=backup"><i class="icon-angle-right"></i> Backup </a></li>
@@ -74,6 +71,12 @@
 
 <li class="panel">
     <a href="index.php?m=contents&p=log">
-        <i class="icon-calendar"></i> History
+        <i class="icon-calendar"></i> Riwayat
+    </a>
+</li>
+
+<li class="panel">
+    <a href="index.php?m=contents&p=ganti-pass">
+        <i class="icon-repeat"></i> Ganti Password
     </a>
 </li>

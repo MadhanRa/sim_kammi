@@ -77,16 +77,16 @@ if (!isset($_SESSION["username_admin"]))
         <!-- HEADER SECTION -->
         <div id="top">
 
-            <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 10px;">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
                 <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
                     <i class="icon-align-justify"></i>
                 </a>
                 <!-- LOGO SECTION -->
-                <header class="navbar-header">
+                <div class="navbar-header">
                     <a href="index.php" class="navbar-brand">
-                        <b class="text-primary">SIMAS Al-Ikhlas</b>
+                        <img src="../assets/img/logo.png" alt="" width="100">
                     </a>
-                </header>
+                </div>
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">
 
@@ -106,25 +106,6 @@ if (!isset($_SESSION["username_admin"]))
 
         <!-- MENU SECTION -->
         <div id="left">
-            <div class="media user-media well-small">
-                <a class="user-link" href="#">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="../assets/img/masjid.png" />
-                </a>
-                <br />
-                <div class="media-body">
-                    <h5 class="media-heading"> <?php echo $_SESSION["nama_admin"]; ?></h5>
-                    <ul class="list-unstyled user-info">
-
-                        <li>
-                            <a class="btn btn-success btn-xs btn-circle" style="width: 10px;height: 12px;"></a> Online
-
-                        </li>
-
-                    </ul>
-                </div>
-                <br />
-            </div>
-
             <ul id="menu" class="collapse">
                 <?php include_once "menu.php"; ?>
             </ul>
@@ -150,23 +131,13 @@ if (!isset($_SESSION["username_admin"]))
             <!--berhenti disini-->
         </div>
         <!--END PAGE CONTENT -->
-
-        <!-- RIGHT STRIP  SECTION -->
-        <div id="right">
-
-            <div class="well well-small">
-                <button class="btn btn-primary btn-block"> Bantuan</button>
-                <button class="btn btn-success btn-block"> Profil </button>
-            </div>
-        </div>
-        <!-- END RIGHT STRIP  SECTION -->
     </div>
 
     <!--END MAIN WRAPPER -->
 
     <!-- FOOTER -->
     <div id="footer">
-
+        <p>&copy; Build by <b class="text-danger">Haris & Ramadhan</b> <?php echo date('Y'); ?> &nbsp;</p>
     </div>
     <!--END FOOTER -->
 

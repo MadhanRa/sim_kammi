@@ -36,7 +36,7 @@
 							<hr>
 							<div class="text-center">
 								<span class="small">
-									Belum punya akun? hubungi kaderisasi
+									Belum punya akun? Daftar <a href="register.php">disini.</a>
 								</span>
 							</div>
 							<br>

@@ -31,7 +31,7 @@ function login($username, $password, $mysqli)
 	}
 }
 
-function cek_login($mysqli)
+function cek_login()
 {
 	// Cek apakah semua variabel session ada / tidak
 	if (isset($_SESSION['id_user'], $_SESSION['password'])) {

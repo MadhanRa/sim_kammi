@@ -3,10 +3,9 @@
 include('fungsi.php');
 include_once "library/database.php";
 include_once "library/fungsi.php";
-require_once("urut_transaksi.php");
 
 session_start();
-if (cek_login($mysqli) == false) {
+if (cek_login() == false) {
 	echo "<script>window.alert('Anda harus login dulu!');
 					window.location.href=('index.php')
 		   </script>";

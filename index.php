@@ -75,7 +75,7 @@ http://www.templatemo.com/tm-518-sentra
     </div>
 
     <div class="slider">
-        <!-- untuk memanggil sidebar.php-->
+        <!-- untuk memanggil slider.php-->
         <?php require_once "slider.php"; ?>
     </div>
 

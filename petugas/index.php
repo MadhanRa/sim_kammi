@@ -9,7 +9,7 @@ if (!isset($_SESSION["username_petugas"]))
 
 <head>
     <meta charset="UTF-8" />
-    <title>Petugas Masjid | Dashboard </title>
+    <title>Pengurus Harian | Dashboard </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />

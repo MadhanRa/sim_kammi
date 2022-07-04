@@ -3,7 +3,7 @@
 include "koneksidb.php";
 
 $conn = mysqli_connect("localhost", "root", "", "db_masjid");
-$carikode = mysqli_query($conn, "SELECT max(id_user) from tbl_user") or die(mysqli_error());
+$carikode = mysqli_query($conn, "SELECT max(id_user) from tbl_user") or die(mysqli_error($conn));
 $datakode = mysqli_fetch_array($carikode);
 if ($datakode) {
   $coba = substr($datakode[0], 3);
@@ -13,5 +13,3 @@ if ($datakode) {
 } else {
   $newUSR = "US-001";
 }
-?>
-?>

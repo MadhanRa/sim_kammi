@@ -11,12 +11,11 @@ if (isset($_POST['register'])) {
     $nama = filter_input(INPUT_POST, 'nama_user', FILTER_SANITIZE_STRING);
     $nohp = str_replace(" ", "", $_POST['nohp_user']);
     $alamat = filter_input(INPUT_POST, 'alamat_user', FILTER_SANITIZE_STRING);
-    $bank = filter_input(INPUT_POST, 'bank_user', FILTER_SANITIZE_STRING);
-    $rekening = filter_input(INPUT_POST, 'rekening_user', FILTER_SANITIZE_STRING);
     $username = filter_input(INPUT_POST, 'username_user', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password_user', FILTER_SANITIZE_STRING);
 
     $password = password_hash($password, PASSWORD_DEFAULT);
+
     // menyiapkan query
     $sql = "INSERT INTO tbl_user (id_user, nama_user, nohp_user, alamat_user, bank_user, rekening_user, username_user, password_user) 
             VALUES (:id_user, :nama_user, :nohp_user, :alamat_user, :bank_user, :rekening_user, :username_user, :password_user)";
@@ -28,8 +27,6 @@ if (isset($_POST['register'])) {
         ":nama_user" => $nama,
         ":nohp_user" => $nohp,
         ":alamat_user" => $alamat,
-        ":bank_user" => $bank,
-        ":rekening_user" => $rekening,
         ":username_user" => $username,
         ":password_user" => $password
     );
@@ -80,14 +77,13 @@ if (isset($_POST['register'])) {
 <body>
 
     <div class="main-w3layouts wrapper">
-        <h1>HALAMAN REGISTER</h1>
+        <h1>Daftar User</h1>
         <div class="main-agileinfo">
             <div class="agileits-top">
                 <form action="" method="POST">
                     <br>
                     <div class="form-group">
-                        <label for="id"></label>
-                        <input class="form-control" type="text" name="id_user" value="<?php echo $newUSR; ?>" readonly="readonly" />
+                        <input type="hidden" name="id_user" value="<?php echo $newUSR; ?>" />
                     </div>
 
                     <div class="form-group">
@@ -96,18 +92,13 @@ if (isset($_POST['register'])) {
                     </div>
 
                     <div class="form-group">
+                        <label for="username"></label>
+                        <input class="form-control" type="text" name="username_user" placeholder="Username" required />
+                    </div>
+
+                    <div class="form-group">
                         <label for="nohp"></label>
                         <input class="form-control" type="text" name="nohp_user" onkeypress="return hanyaAngka(event, false)" placeholder="Telepon" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="bank"></label>
-                        <input class="form-control" type="text" name="bank_user" placeholder="Bank" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="rekening"></label>
-                        <input class="form-control" type="text" name="rekening_user" onkeypress="return hanyaAngka(event, false)" placeholder="Rekening" required />
                     </div>
 
                     <div class="form-group">
@@ -116,29 +107,39 @@ if (isset($_POST['register'])) {
                     </div>
 
                     <div class="form-group">
-                        <label for="username"></label>
-                        <input class="form-control" type="text" name="username_user" placeholder="Username" required />
+                        <label for="password"></label>
+                        <input class="form-control" type="password" name="password_user" id="password" placeholder="Password" required />
                     </div>
 
                     <div class="form-group">
-                        <label for="password"></label>
-                        <input class="form-control" type="password" name="password_user" placeholder="Password" required />
+                        <label for="password-confirm"></label>
+                        <input class="form-control" type="password" name="password_confirm" id="password_confirm" placeholder="Konfirmasi password" />
+                        <div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
+                        <br>
                     </div>
 
-                    <input type="submit" class="btn btn-success btn-block" name="register" value="Daftar" />
+                    <input type="submit" class="btn btn-primary btn-block" name="register" value="Daftar" />
                 </form>
-                <p>&larr; <a href="index.php">Home</a>
                 <p>Sudah punya akun? <a href="index.php">Login di sini</a></p>
 
             </div>
         </div>
     </div>
 
-    <script src="jquery.min.js"></script>
-    <script src="jquery.maskedinput.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script>
-        jQuery(function($) {
-            $("#nohp_user").mask("+62 999 9999 9999");
+        jQuery(document).ready(function() {
+            $("#password_confirm").on('keyup', function() {
+                var password = $("#password").val();
+                var confirmPassword = $("#password_confirm").val();
+                if (password != confirmPassword) {
+                    $("#CheckPasswordMatch").html("Password tidak sama !").css("color", "red");
+                    $(':input[type="submit"]').prop('disabled', true);
+                } else {
+                    $("#CheckPasswordMatch").html("Password sama !").css("color", "white");
+                    $(':input[type="submit"]').prop('disabled', false);
+                }
+            });
         });
     </script>
 
