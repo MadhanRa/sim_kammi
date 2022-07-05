@@ -2,12 +2,10 @@
 
 include_once "library/database.php";
 require_once("config.php");
-require_once("urut_user.php");
 
 if (isset($_POST['register'])) {
 
     // filter data yang diinputkan
-    $id = filter_input(INPUT_POST, 'id_user', FILTER_SANITIZE_STRING);
     $nama = filter_input(INPUT_POST, 'nama_user', FILTER_SANITIZE_STRING);
     $nohp = str_replace(" ", "", $_POST['nohp_user']);
     $alamat = filter_input(INPUT_POST, 'alamat_user', FILTER_SANITIZE_STRING);
@@ -17,22 +15,13 @@ if (isset($_POST['register'])) {
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     // menyiapkan query
-    $sql = "INSERT INTO tbl_user (id_user, nama_user, nohp_user, alamat_user, bank_user, rekening_user, username_user, password_user) 
-            VALUES (:id_user, :nama_user, :nohp_user, :alamat_user, :bank_user, :rekening_user, :username_user, :password_user)";
-    $stmt = $db->prepare($sql);
+    $sql = "INSERT INTO data_user(nama_user, no_hp, alamat, username_user, password_user)
+            VALUES (?, ?, ?, ?, ?)";
+    $stmt = $koneksi->prepare($sql);
 
-    // bind parameter ke query
-    $params = array(
-        ":id_user" => $id,
-        ":nama_user" => $nama,
-        ":nohp_user" => $nohp,
-        ":alamat_user" => $alamat,
-        ":username_user" => $username,
-        ":password_user" => $password
-    );
-
+    $stmt->bind_param("sssss", $nama, $nohp, $alamat, $username, $password);
     // eksekusi query untuk menyimpan ke database
-    $saved = $stmt->execute($params);
+    $saved = $stmt->execute();
 
     // jika query simpan berhasil, maka user sudah terdaftar
     // maka alihkan ke halaman utama
@@ -40,9 +29,12 @@ if (isset($_POST['register'])) {
         echo "<script>window.alert('Registrasi Sukses. Silahkan Login!');
 		window.location.href=('index.php')
 		</script>";
-    else echo "<script>window.alert('Registrasi Gagal. Coba Lagi!');
+    else {
+        echo trigger_error($stmt->error, E_USER_ERROR);
+        echo "<script>window.alert('Registrasi Gagal. Coba Lagi!');
 		window.location.href=('register.php')
 		</script>";
+    }
     exit();
 }
 
@@ -98,7 +90,7 @@ if (isset($_POST['register'])) {
 
                     <div class="form-group">
                         <label for="nohp"></label>
-                        <input class="form-control" type="text" name="nohp_user" onkeypress="return hanyaAngka(event, false)" placeholder="Telepon" required />
+                        <input class="form-control" type="text" name="nohp_user" onkeypress="return hanyaAngka(event, false)" placeholder="No HP" required />
                     </div>
 
                     <div class="form-group">
@@ -126,7 +118,8 @@ if (isset($_POST['register'])) {
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- GLOBAL SCRIPTS -->
+    <script src="assets/plugins/jquery-2.0.3.min.js"></script>
     <script>
         jQuery(document).ready(function() {
             $("#password_confirm").on('keyup', function() {
@@ -143,8 +136,6 @@ if (isset($_POST['register'])) {
         });
     </script>
 
-    <!-- GLOBAL SCRIPTS -->
-    <script src="assets/plugins/jquery-2.0.3.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <!-- END GLOBAL SCRIPTS -->

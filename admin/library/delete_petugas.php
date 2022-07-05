@@ -1,24 +1,18 @@
 <?php
 include_once 'database.php';
 if (isset($_GET['id_petugas'])) {
-   $tampil = $koneksi->prepare("SELECT id_petugas FROM tbl_petugas WHERE id_petugas='" . $_GET['id_petugas'] . "' ");
-   $tampil->execute();
-   $tampil->store_result();
-   $tampil->bind_result($id_petugas);
-   while ($tampil->fetch()) {
 
-
-      $tambah = $koneksi->prepare("DELETE FROM tbl_petugas WHERE id_petugas='$id_petugas'");
-   }
-
-   if ($tambah->execute()) {
+   $id_petugas = $_GET['id_petugas'];
+   $sql = "DELETE FROM data_petugas WHERE id_petugas = $id_petugas";
+   if ($koneksi->query($sql)) {
+      $koneksi->close();
       echo ("<script LANGUAGE='JavaScript'>
-          window.alert('Data Berhasil Dihapus!');
+          window.alert('Data berhasil dihapus!');
           window.location.href='../index.php?m=contents&p=listdatapetugas';
        </script>");
    } else {
       echo ("<script LANGUAGE='JavaScript'>
-          window.alert('Gagal Menghapus,Karena Data Sedang Berelasi dengan table lainnya !');
+          window.alert('Gagal menghapus, karena data sedang berelasi dengan table lainnya!');
           window.location.href='../ndex.php?m=contents&p=listdatapetugas';
        </script>");
    }

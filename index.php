@@ -3,7 +3,7 @@ include('koneksidb.php');
 include('fungsi.php');
 
 session_start(); // Membuat Session
-if (cek_login($mysqli) == true) {
+if (cek_login() == true) {
     header('location: home.php');
     exit();
 }

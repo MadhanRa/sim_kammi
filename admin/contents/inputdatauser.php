@@ -1,6 +1,5 @@
  <?php
     include_once "library/database.php";
-    require_once("urut_id_user.php");
     ?>
  <div class="inner" style="min-height: 700px;">
      <div class="row">

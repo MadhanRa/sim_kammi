@@ -17,11 +17,11 @@ include 'library/database.php'; ?>
                         <div class="panel-heading">
                             <i class="icon-user-md icon-5x"></i>
                             <?php
-                            $conn1 = mysqli_connect("localhost", "root", "", "db_masjid");
+                            $conn1 = mysqli_connect("localhost", "root", "", "sim_kammi");
                             if (!$conn1) {
                                 die("Koneksi tidak berhasil : " . mysqli_connect_error());
                             }
-                            $query1 = "SELECT COUNT(id_user) AS jml1 FROM tbl_user";
+                            $query1 = "SELECT COUNT(id_user) AS jml1 FROM data_user";
                             $sql1 = mysqli_query($conn1, $query1);
                             $row1 = mysqli_fetch_assoc($sql1);
                             ?>
@@ -42,8 +42,8 @@ include 'library/database.php'; ?>
                         <div class="panel-heading">
                             <i class="icon-user-md icon-5x"></i>
                             <?php
-                            $conn1 = mysqli_connect("localhost", "root", "", "db_masjid");
-                            $query1 = "SELECT COUNT(id_petugas) AS jml1 FROM tbl_petugas";
+                            $conn1 = mysqli_connect("localhost", "root", "", "sim_kammi");
+                            $query1 = "SELECT COUNT(id_petugas) AS jml1 FROM data_petugas";
                             $sql1 = mysqli_query($conn1, $query1);
                             $row1 = mysqli_fetch_assoc($sql1);
                             ?>
@@ -92,20 +92,24 @@ include 'library/database.php'; ?>
                         <tbody>
                             <?php
                             $i = 1;
-                            $tampil = $koneksi->prepare("SELECT id_user,nama_user,nohp_user,alamat_user FROM tbl_user");
+                            $tampil = $koneksi->prepare("SELECT id_user,nama_user,no_hp,alamat FROM data_user");
                             $tampil->execute();
                             $tampil->store_result();
                             $tampil->bind_result($id_user, $nama, $nohp, $alamat);
-                            while ($tampil->fetch()) {
+                            if ($tampil->num_rows == 0) {
+                                echo "<tr align='center' bgcolor='pink'><td  colspan='5'><b>BELUM ADA DATA!</b></td></tr>";
+                            } else {
+                                while ($tampil->fetch()) {
                             ?>
-                                <tr>
-                                    <td><?php echo $i++; ?></td>
-                                    <td><?php echo $id_user; ?></td>
-                                    <td><?php echo $nama; ?></td>
-                                    <td><?php echo $nohp; ?></td>
-                                    <td><?php echo $alamat; ?></td>
-                                </tr>
+                                    <tr>
+                                        <td><?php echo $i++; ?></td>
+                                        <td><?php echo $id_user; ?></td>
+                                        <td><?php echo $nama; ?></td>
+                                        <td><?php echo $nohp; ?></td>
+                                        <td><?php echo $alamat; ?></td>
+                                    </tr>
                             <?php
+                                }
                             }
                             ?>
                         </tbody>
@@ -138,9 +142,8 @@ include 'library/database.php'; ?>
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>ID User</th>
-                                <th>Nama User</th>
-                                <th>No KTP</th>
+                                <th>ID Petugas</th>
+                                <th>Nama Petugas</th>
                                 <th>No HP</th>
                                 <th>Alamat</th>
                             </tr>
@@ -148,21 +151,24 @@ include 'library/database.php'; ?>
                         <tbody>
                             <?php
                             $i = 1;
-                            $tampil = $koneksi->prepare("SELECT id_petugas,no_ktp,nama,no_hp,alamat FROM tbl_petugas");
+                            $tampil = $koneksi->prepare("SELECT id_petugas, nama_petugas, no_hp, alamat FROM data_petugas");
                             $tampil->execute();
                             $tampil->store_result();
-                            $tampil->bind_result($id_user, $nama, $noktp, $nohp, $alamat);
-                            while ($tampil->fetch()) {
+                            $tampil->bind_result($id_petugas, $nama, $nohp, $alamat);
+                            if ($tampil->num_rows == 0) {
+                                echo "<tr align='center' bgcolor='pink'><td  colspan='5'><b>BELUM ADA DATA!</b></td></tr>";
+                            } else {
+                                while ($tampil->fetch()) {
                             ?>
-                                <tr>
-                                    <td><?php echo $i++; ?></td>
-                                    <td><?php echo $id_user; ?></td>
-                                    <td><?php echo $nama; ?></td>
-                                    <td><?php echo $noktp; ?></td>
-                                    <td><?php echo $nohp; ?></td>
-                                    <td><?php echo $alamat; ?></td>
-                                </tr>
+                                    <tr>
+                                        <td><?php echo $i++; ?></td>
+                                        <td><?php echo $id_petugas; ?></td>
+                                        <td><?php echo $nama; ?></td>
+                                        <td><?php echo $nohp; ?></td>
+                                        <td><?php echo $alamat; ?></td>
+                                    </tr>
                             <?php
+                                }
                             }
                             ?>
                         </tbody>

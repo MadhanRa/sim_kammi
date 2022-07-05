@@ -144,6 +144,21 @@ if (!isset($_SESSION["username_admin"]))
 
     <!-- GLOBAL SCRIPTS -->
     <script src="../assets/plugins/jquery-2.0.3.min.js"></script>
+    <script>
+        jQuery(document).ready(function() {
+            $("#password_confirm").on('keyup', function() {
+                var password = $("#password").val();
+                var confirmPassword = $("#password_confirm").val();
+                if (password != confirmPassword) {
+                    $("#CheckPasswordMatch").html("Password tidak sama !").css("color", "red");
+                    $(':button[type="submit"]').prop('disabled', true);
+                } else {
+                    $("#CheckPasswordMatch").html("Password sama !").css("color", "green");
+                    $(':button[type="submit"]').prop('disabled', false);
+                }
+            });
+        });
+    </script>
     <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <!-- END GLOBAL SCRIPTS -->

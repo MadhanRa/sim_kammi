@@ -40,8 +40,7 @@
            </nav>
 
            <ul class="social-icons">
-               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="#"><i class="fa fa-globe"></i></a></li>
+               <li><a href="https://twitter.com/kammiuinsuka" target="_blank"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="https://www.instagram.com/kammiuinsuka/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+               <li><a href="https://www.kammiuinsuka.or.id/" target="_blank"><i class="fa fa-globe"></i></a></li>
            </ul>

@@ -2,7 +2,7 @@
 define("HOST", "localhost");
 define("USER", "root");
 define("PASSWORD", "");
-define("DATABASE", "db_masjid");
+define("DATABASE", "sim_kammi");
 
 $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
 if ($mysqli->connect_error) {

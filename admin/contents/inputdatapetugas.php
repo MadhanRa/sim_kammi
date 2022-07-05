@@ -1,6 +1,5 @@
  <?php
     include_once "library/database.php";
-    require_once("urut_id_petugas.php");
     ?>
  <div class="inner" style="min-height: 700px;">
      <div class="row">
@@ -30,24 +29,9 @@
              <div id="collapse2" class="body collapse in">
                  <form class="form-horizontal" action="library/tambah-petugas.php" method="post" id="popup-validation">
                      <div class="form-group">
-                         <label class="control-label col-lg-4">ID Petugas</label>
-                         <div class="col-lg-4">
-                             <input type="text" name="id_petugas" class="form-control chzn-select" tabindex="2" readonly="" value="<?php echo $id_petugas; ?>" />
-
-                         </div>
-                     </div>
-
-                     <div class="form-group">
                          <label class="control-label col-lg-4">Nama Lengkap</label>
                          <div class="col-lg-4">
                              <input type="text" name="nama_petugas" id="sport" class="validate[required] form-control">
-                         </div>
-                     </div>
-
-                     <div class="form-group">
-                         <label class="control-label col-lg-4">No KTP</label>
-                         <div class="col-lg-4">
-                             <input type="text" name="no_ktp" id="sport" class="validate[required] form-control">
                          </div>
                      </div>
 
@@ -69,15 +53,14 @@
                      <div class="form-group">
                          <label class="control-label col-lg-4">Username</label>
                          <div class="col-lg-4">
-                             <input type="text" name="username" class="form-control chzn-select" tabindex="2">
-
+                             <input type="text" name="username" class="form-control chzn-select">
                          </div>
                      </div>
 
                      <div class="form-group">
                          <label class="control-label col-lg-4">Password</label>
                          <div class="col-lg-4">
-                             <input type="password" name="password" class="form-control chzn-select" tabindex="2">
+                             <input type="password" name="password" id="password" class="form-control chzn-select">
 
                          </div>
                      </div>
@@ -85,15 +68,20 @@
                      <div class="form-group">
                          <label class="control-label col-lg-4">Konfirmasi Password</label>
                          <div class="col-lg-4">
-                             <input type="password" name="password2" class="form-control chzn-select" tabindex="2">
-
+                             <input type="password" name="password2" id="password_confirm" class="form-control chzn-select">
+                             <div style="margin-top: 7px; height:15px;" id="CheckPasswordMatch"></div>
                          </div>
                      </div>
 
                      <div style="text-align:center" class="form-actions no-margin-bottom">
-                         <button type="submit" class="btn btn-grad btn-success btn-lg ">
-                             <i class="icon-save"></i> Simpan
-                         </button>
+                         <div class="row">
+                             <div class="col-md-2 col-md-offset-4 btn-col">
+                                 <button type="reset" class="btn btn-block btn-md btn-danger"><i class="icon-remove"></i> Batal</button>
+                             </div>
+                             <div class="col-md-2 btn-col">
+                                 <button type="submit" name="tambah" class="btn btn-block btn-md  btn-success"><i class="icon-save"></i> Simpan</button>
+                             </div>
+                         </div>
                      </div>
                  </form>
              </div>

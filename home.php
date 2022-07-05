@@ -2,7 +2,6 @@
 
 include('fungsi.php');
 include_once "library/database.php";
-include_once "library/fungsi.php";
 
 session_start();
 if (cek_login() == false) {
@@ -24,7 +23,7 @@ if (!isset($_SESSION['id_user'])) {
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Selamat Datang - Masjid Al-Ikhlas</title>
+	<title>Selamat Datang - Agenda KAMMI UIN SUKA</title>
 
 	<!-- 
 
@@ -107,10 +106,10 @@ http://www.templatemo.com/tm-518-sentra
 							<tbody>
 								<?php
 								$i = 1;
-								$tampil = $koneksi->prepare("SELECT id_agenda,judul,jam_awal,jam_akhir,tgl_awal,tgl_akhir,keterangan from tbl_agenda where tgl_awal = CURDATE()");
+								$tampil = $koneksi->prepare("SELECT id_agenda,nama_kegiatan, jam_mulai, jam_akhir, tgl_mulai,tgl_akhir, keterangan from data_agenda where tgl_mulai = CURDATE()");
 								$tampil->execute();
 								$tampil->store_result();
-								$tampil->bind_result($id, $judul, $jamawal, $jamakhir, $tglawal, $tglakhir, $ket);
+								$tampil->bind_result($id, $nama_kegiatan, $jammulai, $jamakhir, $tglmulai, $tglakhir, $ket);
 								if ($tampil->num_rows() == 0) {
 									echo "<tr align='center' bgcolor='pink'><td  colspan='6'><b>BELUM ADA DATA!</b></td></tr>";
 								} else {
@@ -118,47 +117,10 @@ http://www.templatemo.com/tm-518-sentra
 								?>
 										<tr>
 											<td><?php echo $i++; ?></td>
-											<td><?php echo $judul; ?></td>
-											<td><?php echo $jamawal . " s/d " . $jamakhir; ?></td>
-											<td><?php echo $tglawal . " s/d " . $tglakhir; ?></td>
+											<td><?php echo $nama_kegiatan; ?></td>
+											<td><?php echo $jammulai . " s/d " . $jamakhir; ?></td>
+											<td><?php echo $tglmulai . " s/d " . $tglakhir; ?></td>
 											<td><?php echo $ket; ?></td>
-										</tr>
-								<?php
-									}
-								}
-								?>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="col-lg-12">
-					<div class="table-responsive">
-						<table class="table table-bordered table-condesed">
-							<thead>
-								<tr>
-									<th width="1%">No</th>
-									<th>Foto</th>
-									<th>Tanggal Upload</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$i = 1;
-								$tampil = $koneksi->prepare("SELECT id_album,file_name,tgl_upload FROM tbl_album");
-								$tampil->execute();
-								$tampil->store_result();
-								$tampil->bind_result($id, $nama, $tgl);
-								if ($tampil->num_rows() == 0) {
-									echo "<tr align='center' bgcolor='pink'><td  colspan='10'><b>BELUM ADA DATA!</b></td></tr>";
-								} else {
-									while ($tampil->fetch()) {
-								?>
-										<tr>
-											<form method="get" action="library/proses-upload.php">
-												<td><?php echo $i++; ?></td>
-												<td><img src="petugas/library/files/<?php echo $nama; ?>" width="auto" height="150"></td>
-												<td><?php echo $tgl; ?></td>
-											</form>
 										</tr>
 								<?php
 									}

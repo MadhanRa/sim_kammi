@@ -4,7 +4,6 @@ if (!isset($_SESSION["username_petugas"]))
 ?>
 <?php
 include_once "library/database.php";
-include_once "library/fungsi.php";
 
 $id_agenda = $_GET['id'];
 
@@ -41,7 +40,7 @@ if ($tampil->num_rows > 0) {
             </header>
             <div id="collapse2" class="body collapse in">
                 <form class="form-horizontal" action="library/tambah-agenda.php" method="post" id="popup-validation">
-                    <input name="id_agenda" type="hidden" required value="<?= $tampil['id_agenda'] ?>" />
+                    <input name="id_agenda" type="hidden" value="<?= $tampil['id_agenda'] ?>" />
                     <div class="form-group">
                         <label class="control-label col-lg-4">Nama Kegiatan</label>
                         <div class="col-lg-7">

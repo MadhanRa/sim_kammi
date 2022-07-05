@@ -36,11 +36,9 @@ include 'library/database.php'; ?>
                                         <th>No</th>
                                         <th>ID Petugas</th>
                                         <th>Nama Petugas</th>
-                                        <th>No KTP</th>
                                         <th>Alamat</th>
                                         <th>No HP</th>
-                                        <th width="4%">Edit</th>
-                                        <th width="6%">Delete</th>
+                                        <th width="10%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,24 +49,28 @@ include 'library/database.php'; ?>
                                     }
 
                                     $i = 1;
-                                    $tampil = $koneksi->prepare("SELECT id_petugas,no_ktp,nama,alamat,no_hp FROM tbl_petugas WHERE id_petugas like '%$cari%' or  no_ktp like '%$cari%' or nama like '%$cari%' or alamat like '%$cari%' or no_hp like '%$cari%'");
+                                    $tampil = $koneksi->prepare("SELECT id_petugas, nama_petugas, alamat, no_hp FROM data_petugas WHERE id_petugas like '%$cari%' or nama_petugas like '%$cari%' or alamat like '%$cari%' or no_hp like '%$cari%'");
                                     $tampil->execute();
                                     $tampil->store_result();
-                                    $tampil->bind_result($id_petugas, $no_ktp, $nama, $alamat, $no_hp);
-                                    while ($tampil->fetch()) {
+                                    $tampil->bind_result($id_petugas, $nama, $alamat, $no_hp);
+                                    if ($tampil->num_rows == 0) {
+                                        echo "<tr align='center' bgcolor='pink'><td  colspan='6'><b>BELUM ADA DATA!</b></td></tr>";
+                                    } else {
+                                        while ($tampil->fetch()) {
                                     ?>
-                                        <tr>
-                                            <td><?php echo $i++; ?></td>
-                                            <td><?php echo $id_petugas; ?></td>
-                                            <td><?php echo $nama; ?></td>
-                                            <td><?php echo $no_ktp; ?></td>
-                                            <td><?php echo $alamat; ?></td>
-                                            <td><?php echo $no_hp; ?></td>
-                                            <td><a href="edit_petugas.php?id_petugas=<?php echo $id_petugas; ?>" button class="btn btn-grad  btn-sm btn-primary" type="submit" onclick="return confirm('Apakah Anda Ingin Mengedit Data Ini?'); ">Edit</button></td>
-
-                                            <td><a href="library/delete_petugas.php?id_petugas=<?php echo $id_petugas; ?>" button class="btn btn-grad  btn-sm btn-danger" type="submit" onclick="return confirm('Yakin Ingin Menghapus Data Ini?'); ">Delete</button></td>
-                                        </tr>
+                                            <tr>
+                                                <td><?php echo $i++; ?></td>
+                                                <td><?php echo $id_petugas; ?></td>
+                                                <td><?php echo $nama; ?></td>
+                                                <td><?php echo $alamat; ?></td>
+                                                <td><?php echo $no_hp; ?></td>
+                                                <td>
+                                                    <a href="index.php?m=contents&p=edit-petugas&id_petugas=<?php echo $id_petugas; ?>" button class="btn btn-block  btn-md btn-primary"><i class="icon-edit"></i> Edit</a>
+                                                    <a href="library/delete_petugas.php?id_petugas=<?php echo $id_petugas; ?>" button class="btn btn-block  btn-md btn-danger" onclick="return confirm('Yakin Ingin Menghapus Data Ini?'); "><i class="icon-remove"></i> Delete</a>
+                                                </td>
+                                            </tr>
                                     <?php
+                                        }
                                     }
                                     ?>
                                 </tbody>

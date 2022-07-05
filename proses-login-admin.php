@@ -3,8 +3,8 @@ include "koneksidb.php";
 if (isset($_POST["LoginAdmin"])) {
 	$user = $mysqli->escape_string($_POST["username"]);
 	$pass = $mysqli->escape_string($_POST["password"]);
-	$sql = "SELECT * FROM tbl_admin
-			  WHERE username_admin='$user' and password_admin=password('$pass')";
+	$sql = "SELECT * FROM data_admin
+			  WHERE username_admin='$user' AND password_admin='$pass'";
 	$res = $mysqli->query($sql);
 	if ($res) {
 		if ($res->num_rows == 1) {
