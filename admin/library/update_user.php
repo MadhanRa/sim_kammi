@@ -5,22 +5,18 @@ $id 		= $_POST['id_user'];
 $nama 		= $_POST['nama'];
 $no_hp		= str_replace(" ", "", $_POST['no_hp']);
 $alamat 	= $_POST['alamat'];
-$bank 		= $_POST['bank'];
-$no_rekening = $_POST['no_rekening'];
-$username	= $_POST['username'];
 
 
+$update = $koneksi->prepare("UPDATE data_user SET nama_user='$nama', no_hp='$no_hp',alamat='$alamat' WHERE id_user='$id'");
 
-$tambah = $koneksi->prepare("UPDATE tbl_user SET id_user = '$id', nama_user='$nama',nohp_user='$no_hp',alamat_user='$alamat',bank_user='$bank', rekening_user='$no_rekening' WHERE id_user='$id'");
-
-if ($tambah->execute()) {
+if ($update->execute()) {
 	echo ("<script LANGUAGE='JavaScript'>
-          window.alert('Data Berhasil DiUbah!');
+          window.alert('Data berhasil diubah!');
           window.location.href='../index.php?m=contents&p=listdatauser';
        </script>");
 } else {
 	echo "<script> 
-		alert('Data Tidak Lengkap & Valid');
+		alert('Data tidak bisa diubah!');
 		javascript:history.back();
 	</script>";
 }

@@ -3,12 +3,13 @@ include "koneksidb.php";
 if (isset($_POST["LoginAdmin"])) {
 	$user = $mysqli->escape_string($_POST["username"]);
 	$pass = $mysqli->escape_string($_POST["password"]);
+
 	$sql = "SELECT * FROM data_admin
-			  WHERE username_admin='$user' AND password_admin='$pass'";
+			  WHERE username_admin='$user'";
 	$res = $mysqli->query($sql);
-	if ($res) {
-		if ($res->num_rows == 1) {
-			$data = $res->fetch_assoc();
+	if (mysqli_num_rows($res) === 1) {
+		$data = $res->fetch_assoc();
+		if (password_verify($pass, $data['password_admin'])) {
 			session_start();
 			$_SESSION["id_admin"]		= $data["id_admin"];
 			$_SESSION["username_admin"]	= $data["username_admin"];

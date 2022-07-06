@@ -34,18 +34,10 @@
     </ul>
 </li>
 
-<li class="panel ">
-    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#kategori-nav">
-        <i class="icon-th"> </i> Data Kategori
-
-        <span class="pull-right">
-            <i class="icon-angle-left"></i>
-        </span>
+<li class="panel">
+    <a href="index.php?m=contents&p=kategori">
+        <i class="icon-th"></i> Data Kategori
     </a>
-    <ul class="collapse" id="kategori-nav">
-        <li class=""><a href="index.php?m=contents&p=kategori"><i class="icon-angle-right"></i> Input Kategori </a></li>
-        <li class=""><a href="index.php?m=contents&p=listdatakategori"><i class="icon-angle-right"></i> List Kategori </a></li>
-    </ul>
 </li>
 
 <li class="panel ">
@@ -66,12 +58,6 @@
 <li class="panel">
     <a href="index.php?m=contents&p=laporan">
         <i class="icon-print"></i> &nbsp;Cetak
-    </a>
-</li>
-
-<li class="panel">
-    <a href="index.php?m=contents&p=log">
-        <i class="icon-calendar"></i> Riwayat
     </a>
 </li>
 

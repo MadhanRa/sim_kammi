@@ -2,7 +2,7 @@
 $dbHost     = 'localhost';
 $dbUsername = 'root';
 $dbPassword = '';
-$dbName     = 'db_masjid';
+$dbName     = 'sim_kammi';
 
 if (!empty($_FILES)) {
     // Validating SQL file type by extensions

@@ -4,7 +4,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database_name = "db_masjid";
+$database_name = "sim_kammi";
 
 // Get connection object and set the charset
 $conn = mysqli_connect($host, $username, $password, $database_name);

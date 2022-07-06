@@ -16,7 +16,7 @@ if (!isset($_SESSION["username_admin"]))
 
 <head>
     <meta charset="UTF-8" />
-    <title>Admin Masjid | Dashboard </title>
+    <title>Admin SIM KAMMI | Dashboard </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
