@@ -40,17 +40,28 @@ include_once "library/database.php";
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="" class="control-label col-lg-4">Pelaksanaan</label>
+						<div class="col-lg-3">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="pelaksanaan" value="1" id="more-day">
+									Lebih dari sehari
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="control-label col-lg-4">Tanggal</label>
 						<div class="col-lg-3">
 							<div class="input-group">
-								<input name="tglawal" class="form-control" type="date" required />
+								<input name="tglmulai" class="form-control" type="date" required />
 								<span class="input-group-addon"><i class="icon-calendar"></i></span>
 							</div>
 						</div>
-						<label class="control-label col-lg-1">s/d</label>
-						<div class="col-lg-3">
+						<label class="control-label col-lg-1" id="tglakhir-label">s/d</label>
+						<div class="col-lg-3" id="tglakhir-input">
 							<div class="input-group">
-								<input name="tglakhir" class="form-control" type="date" required />
+								<input name="tglakhir" class="form-control" type="date" />
 								<span class="input-group-addon"><i class="icon-calendar"></i></span>
 							</div>
 						</div>
@@ -59,7 +70,7 @@ include_once "library/database.php";
 						<label class="control-label col-lg-4">Pukul</label>
 						<div class="col-lg-2">
 							<div class="input-group">
-								<input name="jamawal" class="form-control" type="time" required />
+								<input name="jammulai" class="form-control" type="time" required />
 								<span class="input-group-addon"><i class="icon-time"></i></span>
 							</div>
 						</div>
@@ -95,8 +106,8 @@ include_once "library/database.php";
 							</div>
 						</div>
 					</div>
+				</form>
 			</div>
-			</form>
 		</div>
 		<br><br>
 		<!-- FORM SEARCH 
@@ -120,8 +131,8 @@ include_once "library/database.php";
 					<tr>
 						<th>No</th>
 						<th>Nama Kegiatan</th>
-						<th>Waktu</th>
 						<th>Tanggal</th>
+						<th>Waktu</th>
 						<th>PJ</th>
 						<th>Keterangan</th>
 						<th>Aksi</th>
@@ -130,10 +141,10 @@ include_once "library/database.php";
 				<tbody>
 					<?php
 					$i = 1;
-					$tampil = $koneksi->prepare("SELECT id_agenda,judul, jam_awal,jam_akhir,tgl_awal,tgl_akhir, pj, keterangan from tbl_agenda");
+					$tampil = $koneksi->prepare("SELECT id_agenda, nama_kegiatan, pelaksanaan, tgl_mulai, tgl_akhir,jam_mulai,jam_akhir, pj, keterangan from data_agenda");
 					$tampil->execute();
 					$tampil->store_result();
-					$tampil->bind_result($id, $judul, $jamawal, $jamakhir, $tglawal, $tglakhir, $pj, $ket);
+					$tampil->bind_result($id, $judul, $pelaksanaan, $tgl_mulai, $tgl_akhir, $jam_mulai, $jam_akhir, $pj, $ket);
 					if ($tampil->num_rows() == 0) {
 						echo "<tr align='center' bgcolor='pink'><td  colspan='7'><b>BELUM ADA DATA!</b></td></tr>";
 					} else {
@@ -142,8 +153,16 @@ include_once "library/database.php";
 							<tr>
 								<td><?php echo $i++; ?></td>
 								<td><?php echo $judul; ?></td>
-								<td><?php echo $jamawal . " s/d " . $jamakhir; ?></td>
-								<td><?php echo $tglawal . " s/d " . $tglakhir; ?></td>
+								<td>
+									<?php
+									if ($pelaksanaan == "Sehari") {
+										echo $tgl_mulai;
+									} else {
+										echo $tgl_mulai . " s/d " . $tgl_akhir;
+									}
+									?>
+								</td>
+								<td><?php echo $jam_mulai . " s/d " . $jam_akhir; ?></td>
 								<td><?php echo $pj; ?></td>
 								<td><?php echo $ket; ?></td>
 								<td>

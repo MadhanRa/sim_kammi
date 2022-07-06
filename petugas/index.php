@@ -122,6 +122,27 @@ if (!isset($_SESSION["username_petugas"]))
 
     <!-- GLOBAL SCRIPTS -->
     <script src="../assets/plugins/jquery-2.0.3.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if ($('#more-day').is(":checked")) {
+                $('#tglakhir-label').show();
+                $('#tglakhir-input').show();
+            } else {
+                $('#tglakhir-label').hide();
+                $('#tglakhir-input').hide();
+            }
+
+            $('#more-day').change(function() {
+                if ($(this).is(":checked")) {
+                    $('#tglakhir-label').show(300);
+                    $('#tglakhir-input').show(300);
+                } else {
+                    $('#tglakhir-label').hide(200);
+                    $('#tglakhir-input').hide(200);
+                }
+            });
+        });
+    </script>
     <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <!-- END GLOBAL SCRIPTS -->

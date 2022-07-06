@@ -7,7 +7,7 @@ include_once "library/database.php";
 
 $id_agenda = $_GET['id'];
 
-$tampil = $koneksi->query("SELECT id_agenda,judul, jam_awal,jam_akhir,tgl_awal,tgl_akhir, pj, keterangan from tbl_agenda WHERE id_agenda=$id_agenda");
+$tampil = $koneksi->query("SELECT id_agenda, nama_kegiatan, pelaksanaan, tgl_mulai, tgl_akhir, jam_mulai, jam_akhir, pj, keterangan from data_agenda WHERE id_agenda=$id_agenda");
 if ($tampil->num_rows > 0) {
     $tampil = $tampil->fetch_assoc();
 }
@@ -44,19 +44,30 @@ if ($tampil->num_rows > 0) {
                     <div class="form-group">
                         <label class="control-label col-lg-4">Nama Kegiatan</label>
                         <div class="col-lg-7">
-                            <input name="judul" class="form-control" type="text" required value="<?= $tampil['judul'] ?>" />
+                            <input name="judul" class="form-control" type="text" required value="<?= $tampil['nama_kegiatan'] ?>" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-lg-4">Pelaksanaan</label>
+                        <div class="col-lg-3">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="pelaksanaan" value="1" id="more-day" <?= ($tampil['pelaksanaan'] !== "Sehari" ? "checked" : "") ?>>
+                                    Lebih dari sehari
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-4">Tanggal</label>
                         <div class="col-lg-3">
                             <div class="input-group">
-                                <input name="tglawal" class="form-control" type="date" required value="<?= $tampil['tgl_awal'] ?>" />
+                                <input name="tglmulai" class="form-control" type="date" required value="<?= $tampil['tgl_mulai'] ?>" />
                                 <span class=" input-group-addon"><i class="icon-calendar"></i></span>
                             </div>
                         </div>
-                        <label class="control-label col-lg-1">s/d</label>
-                        <div class="col-lg-3">
+                        <label class="control-label col-lg-1" id="tglakhir-label">s/d</label>
+                        <div class="col-lg-3" id="tglakhir-input">
                             <div class="input-group">
                                 <input name="tglakhir" class="form-control" type="date" required value="<?= $tampil['tgl_akhir'] ?>" />
                                 <span class=" input-group-addon"><i class="icon-calendar"></i></span>
@@ -67,7 +78,7 @@ if ($tampil->num_rows > 0) {
                         <label class="control-label col-lg-4">Pukul</label>
                         <div class="col-lg-2">
                             <div class="input-group">
-                                <input name="jamawal" class="form-control" type="time" required value="<?= $tampil['jam_awal'] ?>" />
+                                <input name="jammulai" class="form-control" type="time" required value="<?= $tampil['jam_mulai'] ?>" />
                                 <span class=" input-group-addon"><i class="icon-time"></i></span>
                             </div>
                         </div>
