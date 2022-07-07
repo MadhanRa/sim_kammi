@@ -42,6 +42,14 @@ if (!isset($_SESSION["username_petugas"]))
     <link rel="stylesheet" href="../assets/plugins/switch/static/stylesheets/bootstrap-switch.css" />
     <link rel="stylesheet" href="../assets/css/bootstrap-fileupload.min.css" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <?php
+    // Khusus page publikasi, perlu library tambahan
+    if (isset($_GET['p']) && ($_GET['p'] == 'publikasi-buat' || $_GET['p'] == 'publikasi-edit')) {
+        echo "
+        <script src='https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js'></script>
+        ";
+    }
+    ?>
 
 </head>
 
@@ -148,6 +156,16 @@ if (!isset($_SESSION["username_petugas"]))
     <!-- END GLOBAL SCRIPTS -->
 
     <!-- PAGE LEVEL SCRIPTS -->
+    <?php
+    // Khusus page publikasi, perlu library tambahan
+    if (isset($_GET['p']) && ($_GET['p'] == 'publikasi-buat' || $_GET['p'] == 'publikasi-edit')) {
+        echo "
+        <script>
+        CKEDITOR.replace('isi_publikasi');
+        </script>
+        ";
+    }
+    ?>
     <script src="../assets/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="../assets/plugins/dataTables/dataTables.bootstrap.js"></script>
     <script>

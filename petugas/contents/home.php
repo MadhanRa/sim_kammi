@@ -112,30 +112,28 @@ if (!isset($_SESSION["username_petugas"]))
         </div>
 
         <div class="col-lg-6">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <i class="icon-bell"></i> Notifikasi
-                </div>
-                <div class="panel-body">
-                    <div class="list-group">
-                        <a href="index.php?m=contents&p=kegiatan" class="list-group-item">
-                            <?php
-                            $conn5 = mysqli_connect("localhost", "root", "", "db_masjid");
-                            $query5 = "SELECT COUNT(id_agenda) AS agenda FROM tbl_agenda";
-                            $sql5 = mysqli_query($conn5, $query5);
-                            $row5 = mysqli_fetch_assoc($sql5);
-                            ?>
-                            <i class="icon-tasks"></i> Kegiatan yang diagendakan
-                            <span class="pull-right text-muted small"><em> <?php echo $row5['agenda']; ?></em>
-                            </span>
-                        </a>
+            <div class="box">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <i class="icon-bell"></i> Notifikasi
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="index.php?m=contents&p=agenda" class="list-group-item">
+                                <?php
+                                $conn4 = mysqli_connect("localhost", "root", "", "sim_kammi");
+                                $query4 = "SELECT COUNT(id_agenda) AS agenda FROM data_agenda";
+                                $sql4 = mysqli_query($conn4, $query4);
+                                $row4 = mysqli_fetch_assoc($sql4);
+                                ?>
+                                <i class="icon-tasks"></i> Kegiatan yang diagendakan
+                                <span class="pull-right text-muted small"><em> <?php echo $row4['agenda']; ?></em>
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
             </div>
-
-
-
         </div>
     </div>
     <!--TABLE, PANEL, ACCORDION AND MODAL  -->

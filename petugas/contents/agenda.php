@@ -32,7 +32,7 @@ include_once "library/database.php";
 
 			</header>
 			<div id="collapse2" class="body collapse in">
-				<form class="form-horizontal" action="library/tambah-agenda.php" method="post" id="popup-validation">
+				<form class="form-horizontal" action="library/proses-agenda.php" method="post" id="popup-validation">
 					<div class="form-group">
 						<label class="control-label col-lg-4">Nama Kegiatan</label>
 						<div class="col-lg-7">

@@ -39,7 +39,7 @@ if ($tampil->num_rows > 0) {
 
             </header>
             <div id="collapse2" class="body collapse in">
-                <form class="form-horizontal" action="library/tambah-agenda.php" method="post" id="popup-validation">
+                <form class="form-horizontal" action="library/proses-agenda.php" method="post" id="popup-validation">
                     <input name="id_agenda" type="hidden" value="<?= $tampil['id_agenda'] ?>" />
                     <div class="form-group">
                         <label class="control-label col-lg-4">Nama Kegiatan</label>
