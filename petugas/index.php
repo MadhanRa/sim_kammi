@@ -42,6 +42,12 @@ if (!isset($_SESSION["username_petugas"]))
     <link rel="stylesheet" href="../assets/plugins/switch/static/stylesheets/bootstrap-switch.css" />
     <link rel="stylesheet" href="../assets/css/bootstrap-fileupload.min.css" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!-- Favcon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
     <?php
     // Khusus page publikasi, perlu library tambahan
     if (isset($_GET['p']) && ($_GET['p'] == 'publikasi-buat' || $_GET['p'] == 'publikasi-edit')) {
@@ -78,7 +84,7 @@ if (!isset($_SESSION["username_petugas"]))
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <a href="../logout.php"><i class="icon-signout"></i> Logout </a>
+                        <a href="logout.php"><i class="icon-signout"></i> Logout </a>
                     </li>
                 </ul>
 

@@ -1,7 +1,6 @@
 <?php
 
-include_once "library/database.php";
-require_once("config.php");
+include_once "koneksidb.php";
 
 if (isset($_POST['register'])) {
 

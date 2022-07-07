@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (!empty($_SESSION["username_petugas"])) {
-	header("Location: petugas/index.php");
+	header("Location: ../petugas/index.php");
 } elseif (!empty($_SESSION["username_admin"])) {
-	header("Location: admin/index.php");
+	header("Location: ../admin/index.php");
 }
 ?>
 
@@ -28,13 +28,13 @@ if (!empty($_SESSION["username_petugas"])) {
         <![endif]-->
 	<!-- GLOBAL STYLES -->
 	<!-- PAGE LEVEL STYLES -->
-	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.css" />
-	<link rel="stylesheet" href="assets/css/login.css" />
-	<link rel="stylesheet" href="assets/plugins/magic/magic.css" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/theme.css" />
-	<link rel="stylesheet" href="assets/css/MoneAdmin.css" />
-	<link rel="stylesheet" href="assets/plugins/Font-Awesome/css/font-awesome.css" />
+	<link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="../assets/css/login.css" />
+	<link rel="stylesheet" href="../assets/plugins/magic/magic.css" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<link rel="stylesheet" href="../assets/css/theme.css" />
+	<link rel="stylesheet" href="../assets/css/MoneAdmin.css" />
+	<link rel="stylesheet" href="../assets/plugins/Font-Awesome/css/font-awesome.css" />
 
 	<!-- Favcon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -70,7 +70,7 @@ if (!empty($_SESSION["username_petugas"])) {
 					<div class="col-md-6">
 						<div class="panel panel-default">
 							<div class="panel-heading login-admin">
-								<img src="assets/img/logo_big.png" alt="logo KAMMI" width="250">
+								<img src="../assets/img/logo_big.png" alt="logo KAMMI" width="250">
 							</div>
 							<div class="panel-body">
 								<ul class="nav nav-pills">
@@ -174,9 +174,9 @@ if (!empty($_SESSION["username_petugas"])) {
 	<!--END PAGE CONTENT -->
 
 	<!-- PAGE LEVEL SCRIPTS -->
-	<script src="assets/plugins/jquery-2.0.3.min.js"></script>
-	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/js/login.js"></script>
+	<script src="../assets/plugins/jquery-2.0.3.min.js"></script>
+	<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/js/login.js"></script>
 	<!--END PAGE LEVEL SCRIPTS -->
 
 </body>
