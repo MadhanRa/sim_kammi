@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION["username_petugas"]))
-    header("Location: ../administrator.php");
+    header("Location: ../user/administrator.php");
 ?>
 <?php
 

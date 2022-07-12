@@ -50,7 +50,7 @@ if (!isset($_SESSION["username_petugas"]))
     <link rel="manifest" href="../site.webmanifest">
     <?php
     // Khusus page publikasi, perlu library tambahan
-    if (isset($_GET['p']) && ($_GET['p'] == 'publikasi-buat' || $_GET['p'] == 'publikasi-edit')) {
+    if (isset($_GET['p']) && ($_GET['p'] == 'publikasi-buat' || $_GET['p'] == 'publikasi-edit' || $_GET['p'] == 'profil')) {
         echo "
         <script src='https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js'></script>
         ";
@@ -168,6 +168,16 @@ if (!isset($_SESSION["username_petugas"]))
         echo "
         <script>
         CKEDITOR.replace('isi_publikasi');
+        CKEDITOR.replace('tentang_kammi');
+        CKEDITOR.replace('struktur_pengurus');
+        </script>
+        ";
+    }
+    if (isset($_GET['p']) && $_GET['p'] == 'profil') {
+        echo "
+        <script>
+        CKEDITOR.replace('tentang_kammi');
+        CKEDITOR.replace('struktur_pengurus');
         </script>
         ";
     }
@@ -199,7 +209,7 @@ if (!isset($_SESSION["username_petugas"]))
     <script src="../assets/plugins/jquery.dualListbox-1.3/jquery.dualListBox-1.3.min.js"></script>
     <script src="../assets/plugins/autosize/jquery.autosize.min.js"></script>
     <script src="../assets/plugins/jasny/js/bootstrap-inputmask.js"></script>
-    <script src="assets/js/formsInit.js"></script>
+    <script src="../assets/js/formsInit.js"></script>
     <script>
         $(function() {
             formInit();

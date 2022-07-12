@@ -66,7 +66,7 @@ if (isset($_POST['tambah'])) {
 									tgl_unggah = ?
 									WHERE id_publikasi = ?");
 
-	if ($edit === false) {
+	if ($update === false) {
 		trigger_error($koneksi->error, E_USER_ERROR);
 		return;
 	}

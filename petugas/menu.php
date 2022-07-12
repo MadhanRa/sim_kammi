@@ -10,18 +10,10 @@
     </a>
 </li>
 
-<li class="panel ">
-    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#profil-nav">
-        <i class="icon-sitemap"> </i> Profil
-
-        <span class="pull-right">
-            <i class="icon-angle-left"></i>
-        </span>
+<li class="panel">
+    <a href="index.php?m=contents&p=profil">
+        <i class="icon-sitemap"></i> Profil
     </a>
-    <ul class="collapse" id="profil-nav">
-        <li class=""><a href="index.php?m=contents&p=pemasukan"><i class="icon-angle-right"></i> Tentang KAMMI </a></li>
-        <li class=""><a href="index.php?m=contents&p=pengeluaran"><i class="icon-angle-right"></i> Struktur Pengurus </a></li>
-    </ul>
 </li>
 
 

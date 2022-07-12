@@ -4,7 +4,7 @@ include('fungsi.php');
 
 session_start(); // Membuat Session
 if (cek_login() == true) {
-    header('location: home.php');
+    header('location: ../index.php');
     exit();
 }
 
@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
         if (login($username, $password, $mysqli) == true) {
-            // Jika berhasil login alihkan ke home.php
-            header('location: home.php');
+            // Jika berhasil login alihkan ke halaman utama index.php
+            header('location: ../index.php');
             exit();
         } else {
             // Jika gagal login

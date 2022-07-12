@@ -2,7 +2,7 @@
 session_destroy();
 ?>
 <div class="logo">
-	<a href="#"><em>Agenda</em> KAMMI</a>
+	<a href="#"><em>SIM</em> KAMMI</a>
 </div>
 <br><br><br><br><br>
 <div class="sidebar-wrapper">
