@@ -249,8 +249,8 @@ if (!isset($_SESSION["username_petugas"]))
         }
     </script>
     <script type="text/javascript">
-        $('.confirmation-agenda').on('click', function() {
-            return confirm('Yakin ingin menghapus agenda?');
+        $('.confirmation-delete').on('click', function() {
+            return confirm("Yakin ingin menghapus ?");
         });
     </script>
 

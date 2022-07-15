@@ -28,7 +28,7 @@ $current_page = isset($_GET['p']) ? $_GET['p'] : 'home';
                     <a class="nav-link" href="index.php?m=contents&p=publikasi-list">PUBLIKASI</a>
                 </li>
                 <li class="nav-item  <?= ($current_page == 'dokumen-file') ? 'active' : '' ?>">
-                    <a class="nav-link" href="index.php?m=contents&p=agenda">DOKUMEN/ FILE</a>
+                    <a class="nav-link" href="index.php?m=contents&p=dokumen-file">DOKUMEN/ FILE</a>
                 </li>
                 <?php
                 if (cek_login() == true) {

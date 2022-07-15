@@ -23,12 +23,14 @@ if (isset($_POST['tambah'])) {
 	$tambah->bind_param("sssssssss", $idpetugas, $judul, $pelaksanaan, $tglmulai, $tglakhir, $jammulai, $jamakhir, $pj, $keterangan);
 
 	if ($tambah->execute()) {
-		echo "<script>window.alert('Berhasil Ditambah!');
+		echo "<script>window.alert('Agenda berhasil ditambah!');
 		  window.location.href=('../index.php?m=contents&p=agenda')
 		  </script>";
 	} else {
 		echo trigger_error($tambah->error, E_USER_ERROR);
-		echo "GAGAL TAMBAH DATA";
+		echo "<script>window.alert('Dokumen gagal ditambah!');
+		  window.location.href=('../index.php?m=contents&p=agenda')
+		  </script>";
 	}
 } else if (isset($_POST['simpan-edit'])) {
 	$id_agenda 	 = $_POST['id_agenda'];
@@ -69,8 +71,10 @@ if (isset($_POST['tambah'])) {
 		  window.location.href=('../index.php?m=contents&p=agenda')
 		  </script>";
 	} else {
-		echo "GAGAL UBAH DATA";
 		echo trigger_error($edit->error, E_USER_ERROR);
 		printf("%d Row inserted.\n", $stmt->affected_rows);
+		echo "<script>window.alert('Data gagal diubah!');
+		  window.location.href=('../index.php?m=contents&p=dokumen-file')
+		  </script>";
 	}
 }

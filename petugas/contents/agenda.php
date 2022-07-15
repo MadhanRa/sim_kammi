@@ -167,7 +167,7 @@ include_once "library/database.php";
 								<td><?php echo $ket; ?></td>
 								<td>
 									<a href="index.php?m=contents&p=edit-agenda&id=<?= $id ?>" class="btn btn-block btn-md btn-warning"><i class="icon-edit"></i> Edit</a>
-									<a href="library/delete-agenda.php?id=<?= $id ?>" class="btn btn-block btn-md btn-danger confirmation-agenda"><i class="icon-remove"></i> Hapus</a>
+									<a href="library/delete-agenda.php?id=<?= $id ?>" class="btn btn-block btn-md btn-danger confirmation-delete"><i class="icon-remove"></i> Hapus</a>
 								</td>
 							</tr>
 					<?php

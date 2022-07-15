@@ -32,7 +32,7 @@
 </li>
 
 <li class="panel">
-    <a href="index.php?m=contents&p=cek-transfer">
+    <a href="index.php?m=contents&p=dokumen-file">
         <i class="icon-folder-open-alt"></i> Dokumen / File
     </a>
 </li>
