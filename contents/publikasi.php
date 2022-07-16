@@ -21,7 +21,7 @@ if ($publikasi->num_rows > 0) {
         <div class="col-lg-8">
             <div class="post post-single">
                 <div class="post-thumbs">
-                    <img src=" sim_kammi<?= $publikasi['gambar'] ?>" alt="gambar artikel">
+                    <img src=" <?= base_url("library/files/images/") . $publikasi['gambar'] ?>" alt="gambar artikel">
                 </div>
                 <div class="post-meta">
                     <h1><?= $publikasi['judul_publikasi'] ?></h1>
@@ -52,7 +52,7 @@ if ($publikasi->num_rows > 0) {
                         ?>
                             <li>
                                 <a class="text-reset" href="index.php?m=contents&p=publikasi&id=<?= $id_publikasi ?>">
-                                    <img src="<?= 'sim_kammi' . $gambar ?>" alt="gambar artikel">
+                                    <img src="<?= base_url("library/files/images/") . $gambar ?>" alt="gambar artikel">
                                     <p><?= $judul_publikasi ?></p>
                                 </a>
                             </li>

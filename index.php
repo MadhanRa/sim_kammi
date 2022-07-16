@@ -1,5 +1,7 @@
 <?php
 include('user/fungsi.php');
+include('path.php');
+
 session_start(); // Membuat Session
 
 ?>

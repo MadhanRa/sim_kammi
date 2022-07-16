@@ -28,7 +28,7 @@ $next = $page + 1;
                 <a class="text-reset" href="index.php?m=contents&p=publikasi&id=<?= $id_publikasi ?>">
                     <div class="blog-post col">
                         <div class="blog-post_img">
-                            <img src="<?= 'sim_kammi' . $gambar ?>" alt="gambar artikel">
+                            <img src="<?= base_url("library/files/images/") . $gambar ?>" alt="gambar artikel">
                         </div>
                         <div class="blog-post_info">
                             <div class="blog-post_category">

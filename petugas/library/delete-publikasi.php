@@ -1,13 +1,14 @@
 <?php
 include_once "database.php";
 
+
 $id_publikasi = $_GET["id"];
 
 $image = $koneksi->query("SELECT gambar from data_publikasi WHERE id_publikasi=$id_publikasi");
 if ($image->num_rows > 0) {
     $image = $image->fetch_assoc();
 }
-unlink($image['gambar']);
+unlink("../../library/files/images/" . $image['gambar']);
 
 
 $sql = "DELETE FROM data_publikasi WHERE id_publikasi = $id_publikasi";

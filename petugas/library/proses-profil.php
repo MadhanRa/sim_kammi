@@ -1,5 +1,6 @@
 <?php
 include_once 'database.php';
+include('../../path.php');
 require_once '../../library/bulletproof/bulletproof.php';
 
 $image = new Bulletproof\Image($_FILES);
@@ -13,7 +14,7 @@ if (isset($_POST['tentang-kammi'])) {
     if ($image['gambar']) {
         $upload = $image->upload();
         if ($upload) {
-            $image_path = $upload->getFullPath();
+            $image_path = $upload->getName() . "." . $upload->getMime();
         } else {
             echo $image->getError();
         }
@@ -39,8 +40,8 @@ if (isset($_POST['tentang-kammi'])) {
         if ($image['gambar']) {
             $upload = $image->upload();
             if ($upload) {
-                unlink($image_path);
-                $image_path = $upload->getFullPath();
+                unlink("../../library/files/images/" . $image_path);
+                $image_path = $upload->getName() . "." . $upload->getMime();
             } else {
                 echo $image->getError();
             }
@@ -75,7 +76,7 @@ if (isset($_POST['tentang-kammi'])) {
     if ($image['gambar']) {
         $upload = $image->upload();
         if ($upload) {
-            $image_path = $upload->getFullPath();
+            $image_path = $upload->getName() . "." . $upload->getMime();
         } else {
             echo $image->getError();
         }
@@ -101,8 +102,8 @@ if (isset($_POST['tentang-kammi'])) {
         if ($image['gambar']) {
             $upload = $image->upload();
             if ($upload) {
-                unlink($image_path);
-                $image_path = $upload->getFullPath();
+                unlink("../../library/files/images/" . $image_path);
+                $image_path = $upload->getName() . "." . $upload->getMime();
             } else {
                 echo $image->getError();
             }

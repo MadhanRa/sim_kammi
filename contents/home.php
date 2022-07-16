@@ -1,5 +1,7 @@
 <?php
 include('library/koneksidb.php');
+include('library/date-converter.php');
+
 
 ?>
 
@@ -20,7 +22,7 @@ include('library/koneksidb.php');
         while ($carousel->fetch()) {
         ?>
             <div class="carousel-item <?= ($i == 0) ? 'active' : '' ?>">
-                <img src="<?= "sim_kammi" . $gambar ?>" alt="carousel-image">
+                <img src="<?= base_url("library/files/images/") . $gambar ?>" alt="carousel-image">
 
                 <div class="container">
                     <div class="carousel-caption">
@@ -65,7 +67,7 @@ include('library/koneksidb.php');
                     <a class="text-reset" href="index.php?m=contents&p=publikasi&id=<?= $id_publikasi ?>">
                         <div class="blog-post col">
                             <div class="blog-post_img">
-                                <img src="<?= 'sim_kammi' . $gambar ?>" alt="gambar artikel">
+                                <img src="<?= base_url("library/files/images/") . $gambar ?>" alt="gambar artikel">
                             </div>
                             <div class="blog-post_info">
                                 <div class="blog-post_category">
@@ -75,7 +77,7 @@ include('library/koneksidb.php');
                                     <h6><?= $judul_publikasi ?></h6>
                                 </div>
                                 <div class="blog-post_date">
-                                    <span><small class="text-muted"><?= $tanggal ?></small></span>
+                                    <span><small class="text-muted"><?= tanggal_indo($tanggal) ?></small></span>
                                 </div>
                             </div>
                         </div>
@@ -103,50 +105,33 @@ include('library/koneksidb.php');
         </div>
         <div class="konten">
             <div class="row row-cols-1 row-cols-md-2">
-                <div class="col mb-2">
-                    <div class="row">
-                        <div class="col-1 text-center justify-content-center align-self-center">
-                            <i class="bi bi-caret-right-fill" style="font-size: 1.2rem;"></i>
+                <?php
+                $i = 1;
+                $tampil = $koneksi->prepare("SELECT judul_dokumen, link_gdrive, tgl_unggah from data_dokumen ORDER BY id_dokumen DESC LIMIT 4");
+                $tampil->execute();
+                $tampil->store_result();
+                $tampil->bind_result($judul, $link, $tgl);
+                if ($tampil->num_rows() == 0) {
+                    echo "<h6>Belum ada dokumen</h6>";
+                } else {
+                    while ($tampil->fetch()) {
+                ?>
+                        <div class="col mb-2">
+                            <div class="row">
+                                <div class="col-1 text-center justify-content-center align-self-center">
+                                    <i class="bi bi-caret-right-fill" style="font-size: 1.2rem;"></i>
+                                </div>
+                                <div class="col-11">
+                                    <p class="card-text"><small class="text-muted"><?= tanggal_indo($tgl) ?></small></p>
+                                    <h5><a href="<?= $link ?>"><?= $judul ?></a></h5>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-11">
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <h5>Buletin awal tahun</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-2">
-                    <div class="row">
-                        <div class="col-1 text-center justify-content-center align-self-center">
-                            <i class="bi bi-caret-right-fill" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <div class="col-11">
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <h5>Buletin awal tahun</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-2">
-                    <div class="row">
-                        <div class="col-1 text-center justify-content-center align-self-center">
-                            <i class="bi bi-caret-right-fill" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <div class="col-11">
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <h5>Buletin awal tahun</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-2">
-                    <div class="row">
-                        <div class="col-1 text-center justify-content-center align-self-center">
-                            <i class="bi bi-caret-right-fill" style="font-size: 1.2rem;"></i>
-                        </div>
-                        <div class="col-11">
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <h5>Buletin awal tahun</h5>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    }
+                }
+                ?>
+
             </div>
         </div>
         <div class="more-button mt-3">

@@ -17,7 +17,7 @@ if ($tentang_kammi->num_rows > 0) {
     </div>
     <div class="profile-content row">
         <div class="post-thumbs col-md-12 mb-3 text-center">
-            <img src="sim_kammi<?= $tentang_kammi['gambar'] ?>" alt="gambar tentang-kammi" class="img-fluid">
+            <img src="sim_kammi<?= base_url("library/files/images/") . $tentang_kammi['gambar'] ?>" alt="gambar tentang-kammi" class="img-fluid">
         </div>
         <div class="profile-entry col-md-12">
             <?= $tentang_kammi['isi_profil'] ?>
